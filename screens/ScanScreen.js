@@ -23,10 +23,12 @@ export default class ScanScreen extends Component {
     if (result.data !== this.state.lastScannedUrl) {
       LayoutAnimation.spring();
       this.setState({ lastScannedUrl: result.data });
+      this.props.navigation.navigate('RedeemSuccess')
     }
   };
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
 
