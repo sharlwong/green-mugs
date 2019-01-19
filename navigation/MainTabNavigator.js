@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/JustATributeApp';
-import LinksScreen from '../screens/LinksScreen';
+import LinksScreen from '../screens/ScanScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
@@ -30,7 +30,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Rewards',
+  tabBarLabel: 'Scan',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
