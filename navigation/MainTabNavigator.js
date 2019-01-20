@@ -4,8 +4,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/JustATributeApp';
-import LinksScreen from '../screens/LinksScreen';
+import LinksScreen from '../screens/ScanScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import RedeemSucessScreen from '../screens/RedeemSucessScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -30,7 +31,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Rewards',
+  tabBarLabel: 'Scan',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -53,8 +54,23 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+const RedeemSucessStack = createStackNavigator({
+  RedeemSuccess: RedeemSucessScreen,
+});
+
+RedeemSucessStack.navigationOptions = {
+  tabBarLabel: 'Redeem',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  RedeemSucessStack
 });
