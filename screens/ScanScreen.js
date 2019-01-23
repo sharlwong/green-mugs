@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Alert, Linking, Dimensions, LayoutAnimation, Text, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import { Modal,Alert, Linking, Dimensions, LayoutAnimation, Text, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 
 export default class ScanScreen extends Component {
   state = {
     hasCameraPermission: null,
     lastScannedUrl: null,
+    ModalVisibleStatus: false 
   };
 
   componentDidMount() {
@@ -19,13 +20,25 @@ export default class ScanScreen extends Component {
     });
   };
 
-  _handleBarCodeRead = result => {
-    if (result.data !== this.state.lastScannedUrl) {
-      LayoutAnimation.spring();
-      this.setState({ lastScannedUrl: result.data });
-      this.props.navigation.navigate('RedeemSuccess')
-    }
-  };
+  ShowModalFunction(visible) {
+    this.setState({ModalVisibleStatus: visible});
+  }
+
+  _handleBarCodeRead = () => { this.ShowModalFunction(true) }
+
+  _navigateToHome = () => {
+    console.log("BEFORE navigate")
+    this.props.navigation.navigate('Home')
+    console.log("AFTER navigate")
+  }
+
+  // _handleBarCodeRead = result => {
+  //   if (result.data !== this.state.lastScannedUrl) {
+  //     LayoutAnimation.spring();
+  //     this.setState({ lastScannedUrl: result.data });
+  //     this.props.navigation.navigate('RedeemSuccess')
+  //   }
+  // };
 
   render() {
     const {navigate} = this.props.navigation;
@@ -49,6 +62,22 @@ export default class ScanScreen extends Component {
         {this._maybeRenderUrl()}
 
         <StatusBar hidden />
+
+        <Modal
+          transparent={false}
+          animationType={"slide"}
+          visible={this.state.ModalVisibleStatus} 
+          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
+
+            <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={styles.ModalInsideView}>
+                {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
+                    <Text style={styles.TextStyle}>Thank you for making a difference through Green Mugs!</Text>
+                    <Button  title="Click Here To Hide Modal" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } />
+                    {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
+                </View>
+             </View>
+        </Modal>
       </View>
     );
   }
