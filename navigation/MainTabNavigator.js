@@ -4,9 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/JustATributeApp';
-import LinksScreen from '../screens/ScanScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import RedeemSucessScreen from '../screens/RedeemSucessScreen';
+import ScanScreen from '../screens/ScanScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
