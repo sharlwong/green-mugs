@@ -7,7 +7,8 @@ import HomeScreen from '../screens/JustATributeApp';
 import LocateScreen from '../screens/LocateScreen';
 import ScanScreen from '../screens/ScanScreen';
 
-const Menu = createDrawerNavigator({
+const Menu = createDrawerNavigator(
+  {
     "HomeScreen" : { screen: HomeScreen },
     "LocateScreen": { screen: LocateScreen },
     "ScanScreen": { screen: ScanScreen }
@@ -15,8 +16,9 @@ const Menu = createDrawerNavigator({
   {
     drawerWidth: 300,
     drawerPosition: 'right',
-    initialRouteName: 'HomeScreen',
-  })
+    initialRouteName: 'LocateScreen',
+  }
+)
 
 const MenuContainer = () => {
   let pressMenu

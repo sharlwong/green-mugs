@@ -1,29 +1,26 @@
 import { createStackNavigator } from 'react-navigation'
 import MenuContainer from './navigation/NavigationMenu'
 
-import UserLoginForm from './screens/SettingsScreen'
-import SignUpForm from './screens/SettingsScreen'
+import Tutorial from './screens/TutorialScreen';
+import JustATributeApp from './screens/JustATributeApp';
 
-const EntryStack = createStackNavigator(
+const TutorialStack = createStackNavigator(
   {
-    UserLogin: {
-      screen: UserLoginForm,
-    },
-    SignUpForm: {
-      screen: SignUpForm,
-    },
+    Tutorial: {
+      screen: Tutorial,
+    }
   },
   {
-    headerMode: 'float', 
+    headerMode: 'none', 
   }
 );
 export const RootStack = createStackNavigator(
   {
-    // EntryStack: { screen: EntryStack },
+    TutorialStack: { screen: TutorialStack },
     MenuStack: { screen: MenuContainer },
   },
   {
     headerMode: 'none',
-    initialRouteName: 'MenuStack',
+    initialRouteName: 'TutorialStack',
   }
 )
