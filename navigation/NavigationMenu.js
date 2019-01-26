@@ -1,25 +1,22 @@
 import React from 'react'
+import { Text, StyleSheet } from 'react-native';
 import {createDrawerNavigator, DrawerActions} from 'react-navigation'
 import {Icon, Header} from 'react-native-elements'
 
 import HomeScreen from '../screens/JustATributeApp';
+import LocateScreen from '../screens/LocateScreen';
 import ScanScreen from '../screens/ScanScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import RedeemSucessScreen from '../screens/RedeemSucessScreen';
 
-const Menu = createDrawerNavigator(
-  {
-    "HomeScreen": { screen: HomeScreen },
-    "ScanScreen": { screen: ScanScreen },
-    "SettingsScreen": { screen: SettingsScreen },
-    "RedeemSucessScreen": {screen: RedeemSucessScreen}
+const Menu = createDrawerNavigator({
+    "HomeScreen" : { screen: HomeScreen },
+    "LocateScreen": { screen: LocateScreen },
+    "ScanScreen": { screen: ScanScreen }
   },
   {
     drawerWidth: 300,
     drawerPosition: 'right',
     initialRouteName: 'HomeScreen',
-  }
-)
+  })
 
 const MenuContainer = () => {
   let pressMenu
@@ -43,4 +40,6 @@ const MenuContainer = () => {
     </React.Fragment>
   )
 }
+
 export default MenuContainer
+

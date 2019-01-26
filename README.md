@@ -6,6 +6,9 @@ BarCodeScanner and Permissions libraries from Expo was used to build the functio
 
 (No special installation steps required.)
 
+Read here for more details on how we implemented the modal that pops up after QR code is scanned:
+https://reactnativecode.com/react-native-modal-ios-android/
+
 ## Navigation Bar
 
 TODO:
