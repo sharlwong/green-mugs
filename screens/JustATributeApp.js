@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 2,
-        width: 100,
+        width: 320,
         justifyContent: 'flex-end',
         alignItems: 'center'
     },
