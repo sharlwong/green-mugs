@@ -14,6 +14,7 @@ export default class RewardsScreen extends React.Component {
         <Icon
           name="menu"
           onPress={() => navigation.toggleDrawer()}
+          iconStyle={{marginRight: 20}}
         />
       )
     };
