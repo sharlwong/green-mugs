@@ -11,8 +11,7 @@ import {
   Button
 } from 'react-native';
 
-import {Icon} from 'react-native-elements'
-import HeaderBar from '../navigation/HeaderBar';
+import {Icon} from 'react-native-elements';
 
 export default class LocateScreen extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -33,6 +32,18 @@ export default class LocateScreen extends Component {
                 <Image source={require('../assets/images/pokemon-go-map.png')}
     			         style={styles.image}
     			       />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => this.props.navigation.navigate('FAQScreen')}
+                >
+                  <Text>See full list of locations of Green Mugs Machines.</Text>                 
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => this.props.navigation.navigate('ScanScreen')}
+                >
+                  <Text>Scan to loan/return mug</Text>                 
+                </TouchableOpacity>
             </View>
         );
     }
@@ -46,7 +57,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 0,
-        width: 320,
+        height: 400,
         justifyContent: 'flex-end',
         alignItems: 'center'
     },
@@ -58,5 +69,11 @@ const styles = StyleSheet.create({
     },
     empty: {
         flex: 1
+    },
+    button: {
+      width: 200,
+      backgroundColor: '#5FB67D',
+      marginTop: 10,
+      marginLeft: 50
     }
 });

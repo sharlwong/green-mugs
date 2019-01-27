@@ -30,6 +30,20 @@ const LocateScreenStack = createStackNavigator(
   }
 );
 
+const ScanScreenStack = createStackNavigator(
+  {
+    ScanScreen: {
+      screen: ScanScreen
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <HeaderBar headerTitle = 'QR Code Scanner' />,
+    }),
+  }
+);
+
+
 const RewardsScreenStack = createStackNavigator(
   {
     RewardsScreen: {
@@ -81,6 +95,12 @@ const MenuStack = createDrawerNavigator(
             style={{marginLeft: 5, width: 24, height: 24}}
           />          
         ) 
+      }
+    },
+    "ScanScreenStack": {
+      screen: ScanScreenStack,
+      navigationOptions: {
+          drawerLabel: () => null
       }
     },
     "RewardsScreen": { 

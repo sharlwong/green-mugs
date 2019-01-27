@@ -2,7 +2,21 @@ import React, { Component } from 'react';
 import { Modal,Alert, Linking, Dimensions, LayoutAnimation, Text, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 
+import {Icon} from 'react-native-elements';
+
 export default class ScanScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <Icon
+          name="menu"
+          onPress={() => navigation.toggleDrawer()}
+          iconStyle={{marginRight: 20}}
+        />
+      )
+    };
+  };
+
   state = {
     hasCameraPermission: null,
     lastScannedUrl: null,
@@ -73,8 +87,13 @@ export default class ScanScreen extends Component {
               <View style={styles.ModalInsideView}>
                 {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
                     <Text style={styles.TextStyle}>Thank you for making a difference through Green Mugs!</Text>
-                    <Button  title="Click Here To Hide Modal" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } />
-                    {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
+                    <Button 
+                      title="Click Here To Hide Modal" 
+                      onPress={() => { 
+                        this.ShowModalFunction(!this.state.ModalVisibleStatus);
+                        this.props.navigation.navigate('LocateScreen');
+                      }}
+                    />
                 </View>
              </View>
         </Modal>
