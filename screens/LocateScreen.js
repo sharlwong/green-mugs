@@ -21,6 +21,7 @@ export default class LocateScreen extends Component {
           <Icon
             name="menu"
             onPress={() => navigation.toggleDrawer()}
+            iconStyle={{marginRight: 20}}
           />
         )
       };

@@ -6,8 +6,6 @@ import {
   ImageBackground
   } from 'react-native';
 
-import {Icon, Header} from 'react-native-elements'
-
 
 export default class HeaderBar extends React.Component {
 	render() {
@@ -15,10 +13,16 @@ export default class HeaderBar extends React.Component {
 		return (
 		    <ImageBackground
 				source={require("../assets/images/green-mugs-logo.png")}
-				style={{marginLeft: 10, height: 20, width: 20 }} >
+				style={
+					{	marginLeft: 20, 
+						height: 28, 
+						width: 27 
+					}
+				} >
 				<Text style={{ 
-					width: 200,
-					marginLeft: 40
+					width: 400,
+					marginLeft: 40,
+					fontSize: 20
 					}}>
 						{headerTitle}
 				</Text>

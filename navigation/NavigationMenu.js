@@ -20,20 +20,12 @@ import HeaderBar from './HeaderBar.js'
 const LocateScreenStack = createStackNavigator(
   {
     LocateScreen: {
-      screen: LocateScreen,
-      navigationOptions: {
-        drawerIcon: () => (
-          <Image
-            source={require("../assets/images/locate-icon.png")}
-            style={{marginLeft: 5, width: 24, height: 24, width: 24, height: 24}}
-          />          
-        )
-      }
+      screen: LocateScreen
     }
   },
   {
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <HeaderBar headerTitle = 'Locate Green Mugs Machines' />
+      headerLeft: <HeaderBar headerTitle = 'Green Mugs' />,
     }),
   }
 );
@@ -41,15 +33,7 @@ const LocateScreenStack = createStackNavigator(
 const RewardsScreenStack = createStackNavigator(
   {
     RewardsScreen: {
-      screen: RewardsScreen,
-      navigationOptions: {
-          drawerIcon: () => (
-            <Image
-              source={require("../assets/images/locate-icon.png")}
-              style={{marginLeft: 5, width: 24, height: 24}}
-            />          
-          )
-      }
+      screen: RewardsScreen
     }
   },
   {
@@ -62,15 +46,7 @@ const RewardsScreenStack = createStackNavigator(
 const AccountScreenStack = createStackNavigator(
   {
     AccountScreen: {
-      screen: AccountScreen,
-      navigationOptions: {
-          drawerIcon: () => (
-            <Image
-              source={require("../assets/images/locate-icon.png")}
-              style={{marginLeft: 5, width: 24, height: 24}}
-            />          
-          )
-      }
+      screen: AccountScreen
     }
   },
   {
@@ -83,15 +59,7 @@ const AccountScreenStack = createStackNavigator(
 const FAQScreenStack = createStackNavigator(
   {
     FAQScreen: {
-      screen: FAQScreen,
-      navigationOptions: {
-          drawerIcon: () => (
-            <Image
-              source={require("../assets/images/locate-icon.png")}
-              style={{marginLeft: 5, width: 24, height: 24}}
-            />          
-          )
-      }
+      screen: FAQScreen
     }
   },
   {
