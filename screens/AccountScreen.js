@@ -5,9 +5,18 @@ import {
 	Text 
 } from 'react-native';
 
+import {Icon} from 'react-native-elements';
+
 export default class AccountScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Links',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <Icon
+          name="menu"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      )
+    };
   };
 
   render() {

@@ -5,11 +5,20 @@ import {
   Text 
 } from 'react-native';
 
-export default class FAQScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Links',
-  };
+import {Icon} from 'react-native-elements';
 
+export default class FAQScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: (
+        <Icon
+          name="menu"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      )
+    };
+  };
+  
   render() {
     return (
       <ScrollView style={styles.container}>

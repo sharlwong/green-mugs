@@ -6,18 +6,32 @@ import {
   View,
   Image,
   ImageBackground,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity,
+  Button
 } from 'react-native';
 
+import {Icon} from 'react-native-elements'
+import HeaderBar from '../navigation/HeaderBar';
+
 export default class LocateScreen extends Component {
-	render() {
+    static navigationOptions = ({ navigation }) => {
+      return {
+        headerRight: (
+          <Icon
+            name="menu"
+            onPress={() => navigation.toggleDrawer()}
+          />
+        )
+      };
+    };
+
+    render() { 
         return (
-            <View style={styles.container}>
-                <View style={styles.empty} />
-                	<Image source={require('../assets/images/pokemon-go-map.png')}
-					     style={styles.image}
-					/>
-                <View style={styles.empty} />
+            <View>
+                <Image source={require('../assets/images/pokemon-go-map.png')}
+    			         style={styles.image}
+    			       />
             </View>
         );
     }

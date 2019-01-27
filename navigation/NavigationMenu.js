@@ -1,6 +1,12 @@
 import React from 'react'
-import { Text, StyleSheet, Image } from 'react-native';
-import {createDrawerNavigator, DrawerActions} from 'react-navigation'
+import { 
+  Text, 
+  StyleSheet, 
+  Image,
+  ImageBackground,
+  View
+  } from 'react-native';
+import {createDrawerNavigator, DrawerActions, createStackNavigator} from 'react-navigation'
 import {Icon, Header} from 'react-native-elements'
 
 import LocateScreen from '../screens/LocateScreen';
@@ -9,22 +15,108 @@ import AccountScreen from '../screens/AccountScreen';
 import RewardsScreen from '../screens/RewardsScreen';
 import FAQScreen from '../screens/FAQScreen';
 
-const Menu = createDrawerNavigator(
+import HeaderBar from './HeaderBar.js'
+
+const LocateScreenStack = createStackNavigator(
   {
-    "LocateScreen": { 
+    LocateScreen: {
       screen: LocateScreen,
       navigationOptions: {
-          title: 'Locate Green Mugs Machine',
-          drawerIcon: () => (
+        drawerIcon: () => (
           <Image
             source={require("../assets/images/locate-icon.png")}
             style={{marginLeft: 5, width: 24, height: 24, width: 24, height: 24}}
-          />
+          />          
         )
+      }
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <HeaderBar headerTitle = 'Locate Green Mugs Machines' />
+    }),
+  }
+);
+
+const RewardsScreenStack = createStackNavigator(
+  {
+    RewardsScreen: {
+      screen: RewardsScreen,
+      navigationOptions: {
+          drawerIcon: () => (
+            <Image
+              source={require("../assets/images/locate-icon.png")}
+              style={{marginLeft: 5, width: 24, height: 24}}
+            />          
+          )
+      }
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <HeaderBar headerTitle = 'Rewards' />
+    }),
+  }
+);
+
+const AccountScreenStack = createStackNavigator(
+  {
+    AccountScreen: {
+      screen: AccountScreen,
+      navigationOptions: {
+          drawerIcon: () => (
+            <Image
+              source={require("../assets/images/locate-icon.png")}
+              style={{marginLeft: 5, width: 24, height: 24}}
+            />          
+          )
+      }
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <HeaderBar headerTitle = 'My Account' />
+    }),
+  }
+);
+
+const FAQScreenStack = createStackNavigator(
+  {
+    FAQScreen: {
+      screen: FAQScreen,
+      navigationOptions: {
+          drawerIcon: () => (
+            <Image
+              source={require("../assets/images/locate-icon.png")}
+              style={{marginLeft: 5, width: 24, height: 24}}
+            />          
+          )
+      }
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <HeaderBar headerTitle = 'FAQ' />
+    }),
+  }
+);
+
+const MenuStack = createDrawerNavigator(
+  {
+    "LocateScreen": { 
+      screen: LocateScreenStack,
+      navigationOptions: {
+        title: 'Locate Green Mugs Machine',
+        drawerIcon: () => (
+          <Image
+            source={require("../assets/images/locate-icon.png")}
+            style={{marginLeft: 5, width: 24, height: 24}}
+          />          
+        ) 
       }
     },
     "RewardsScreen": { 
-      screen: RewardsScreen,
+      screen: RewardsScreenStack,
       navigationOptions: {
           title: 'Rewards',
           drawerIcon: () => (
@@ -36,7 +128,7 @@ const Menu = createDrawerNavigator(
       }
     },
     "AccountScreen": { 
-      screen: AccountScreen,
+      screen: AccountScreenStack,
       navigationOptions: {
           title: 'My Account',
           drawerIcon: () => (
@@ -48,7 +140,7 @@ const Menu = createDrawerNavigator(
       }
     },
     "FAQScreen": { 
-      screen: FAQScreen,
+      screen: FAQScreenStack,
       navigationOptions: {
           title: 'FAQ',
           drawerIcon: () => (
@@ -61,7 +153,7 @@ const Menu = createDrawerNavigator(
     },
   },
   {
-    drawerWidth: 300,
+    drawerWidth: 280,
     drawerPosition: 'right',
     initialRouteName: 'LocateScreen',
     contentOptions: {
@@ -72,30 +164,6 @@ const Menu = createDrawerNavigator(
       }
     }
   }
-)
+);
 
-const MenuContainer = () => {
-  let pressMenu
-
-  return(
-    <React.Fragment>
-      <Header
-        backgroundColor="white"
-        rightComponent={
-          <Icon
-            name="menu"
-            onPress={() => {
-              pressMenu.dispatch(DrawerActions.toggleDrawer())
-                }}
-           />
-        }
-      />
-      <Menu
-         ref={navigatorRef => { pressMenu = navigatorRef}}
-      />
-    </React.Fragment>
-  )
-}
-
-export default MenuContainer
-
+export default MenuStack;
