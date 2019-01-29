@@ -14,7 +14,6 @@ import ScanScreen from '../screens/ScanScreen';
 import AccountScreen from '../screens/AccountScreen';
 import RewardsScreen from '../screens/RewardsScreen';
 import FAQScreen from '../screens/FAQScreen';
-
 import HeaderBar from './HeaderBar.js'
 
 const LocateScreenStack = createStackNavigator(
