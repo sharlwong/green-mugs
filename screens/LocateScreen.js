@@ -5,13 +5,17 @@ import {
   Text,
   View,
   Image,
+  Dimensions,
   ImageBackground,
   TouchableHighlight,
   TouchableOpacity,
   Button
 } from 'react-native';
 
+import ImageZoom from 'react-native-image-pan-zoom';
 import {Icon} from 'react-native-elements';
+
+import GreenButton from '../components/GreenButton.js';
 
 export default class LocateScreen extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -28,23 +32,30 @@ export default class LocateScreen extends Component {
 
     render() { 
         return (
-            <View>
-                <Image source={require('../assets/images/pokemon-go-map.png')}
-    			         style={styles.image}
-    			       />
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => this.props.navigation.navigate('FAQScreen')}
-                >
-                  <Text>See full list of locations of Green Mugs Machines.</Text>                 
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => this.props.navigation.navigate('ScanScreen')}
-                >
-                  <Text>Scan to loan/return mug</Text>                 
-                </TouchableOpacity>
-            </View>
+          <View style={{paddingLeft: 30, paddingRight:30, backgroundColor: 'white', height: Dimensions.get('window').height}}>
+            <ImageZoom 
+                  cropWidth={Dimensions.get('window').width-60}
+                  cropHeight={(400/265)*(Dimensions.get('window').width-60)}
+                  imageWidth={337}
+                  imageHeight={600}
+                  style={{borderRadius: 10, marginTop: 10}}
+            >
+              <Image source={require('../assets/images/pokemon-go-map-copy.jpg')} />
+            </ImageZoom>
+            
+            <GreenButton
+              icon="crop-free"
+              text="Scan to loan or return mug"
+              onPress={() => this.props.navigation.navigate('ScanScreen')}
+            />
+
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('FAQScreen')}
+            >
+              <Text style={{marginTop: 10}}>See full list of locations of Green Mugs Machines.</Text>                 
+            </TouchableOpacity>
+          </View>
+      
         );
     }
 }
@@ -57,7 +68,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 0,
-        height: 400,
         justifyContent: 'flex-end',
         alignItems: 'center'
     },
@@ -71,9 +81,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     button: {
-      width: 200,
+      width: 300,
       backgroundColor: '#5FB67D',
+      borderRadius: 10,
+      color: 'white',
       marginTop: 10,
-      marginLeft: 50
+      padding: 10,
+      textAlign: 'center',
+      fontSize: 14
     }
 });
