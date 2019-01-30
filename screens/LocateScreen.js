@@ -5,8 +5,8 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
   ImageBackground,
+  Dimensions,
   TouchableHighlight,
   TouchableOpacity,
   Button
@@ -38,9 +38,9 @@ export default class LocateScreen extends Component {
                   cropHeight={(400/265)*(Dimensions.get('window').width-60)}
                   imageWidth={337}
                   imageHeight={600}
-                  style={{borderRadius: 10, marginTop: 10}}
+                  style={{borderRadius:10, marginTop: 10}}
             >
-              <Image source={require('../assets/images/pokemon-go-map-copy.jpg')} />
+              <Image source={require('../assets/images/pokemon-go-map-copy.jpg')}/>
             </ImageZoom>
             
             <GreenButton
@@ -52,10 +52,9 @@ export default class LocateScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('FAQScreen')}
             >
-              <Text style={{marginTop: 10}}>See full list of locations of Green Mugs Machines.</Text>                 
+              <Text style={{textDecorationLine:'underline', textAlign:'center', marginTop: 10}}>See list of locations of Green Mugs Machines.</Text>
             </TouchableOpacity>
           </View>
-      
         );
     }
 }
