@@ -8,47 +8,40 @@ import {Icon} from 'react-native-elements';
 class GreenButton extends Component {
 	
 	render() {
-		const { onPress, text, icon } = this.props;
+		const { onPress, text, buttonWidth='100', buttonHeight='40', buttonMarginTop, buttonMarginLeft } = this.props;
+		let buttonWidthNumber = parseInt(buttonWidth.replace(/['"]+/g, ''), 10)
+		let buttonHeightNumber = parseInt(buttonHeight.replace(/['"]+/g, ''), 10)
+		let buttonMarginTopNumber = parseInt(buttonMarginTop.replace(/['"]+/g, ''), 10)
+		let buttonMarginLeftNumber = parseInt(buttonMarginLeft.replace(/['"]+/g, ''), 10)
 
 		return (
 		  <TouchableOpacity 
-			  style={styles.buttonStyle}
+			  style={[styles.buttonStyle,{width: buttonWidthNumber, height: buttonHeightNumber, marginTop: buttonMarginTopNumber, marginLeft: buttonMarginLeftNumber}]}
 				onPress={() => onPress()}
 		  >
-		  	<Icon
-          name={icon}
-          iconStyle={styles.iconStyle}
-        />
-				<Text style={styles.textStyle}>
-	        {text}
-				</Text>
+			<Text style={styles.textStyle}>
+	        	{text}
+			</Text>
 		  </TouchableOpacity>
 		);
 	}
 }
 
 GreenButton.propTypes = {
-  icon: PropTypes.string.isRequired,
+  buttonWidth: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
-	iconStyle: {
-		marginRight: 10, 
-		color:'white', 
-		textAlign:'center'
-	},
   textStyle: {
 	  fontSize: 16,
 		color: '#ffffff',
 		textAlign:'center'
 	},
   buttonStyle: {
-    width: '100%',
     backgroundColor: '#5FB67D',
     borderRadius: 10,
-    marginTop: 10,
     padding: 10,
     textAlign: 'center',
     flexDirection: 'row', 

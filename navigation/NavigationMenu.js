@@ -37,7 +37,7 @@ const ScanScreenStack = createStackNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      headerLeft: <HeaderBar headerTitle = 'QR Code Scanner' />,
+      headerLeft: <HeaderBar headerTitle = 'Scan QR Code' />,
     }),
   }
 );
@@ -84,7 +84,7 @@ const FAQScreenStack = createStackNavigator(
 
 const MenuStack = createDrawerNavigator(
   {
-    "ScanScreenStack": {
+    "ScanScreen": {
       screen: ScanScreenStack,
       navigationOptions: {
         title: 'Scan QR Code',

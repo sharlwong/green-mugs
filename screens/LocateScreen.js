@@ -15,7 +15,7 @@ import {
 import ImageZoom from 'react-native-image-pan-zoom';
 import {Icon} from 'react-native-elements';
 
-import GreenButton from '../components/GreenButton.js';
+import GreenButtonWithIcon from '../components/GreenButtonWithIcon.js';
 
 export default class LocateScreen extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -43,7 +43,7 @@ export default class LocateScreen extends Component {
               <Image source={require('../assets/images/pokemon-go-map-copy.jpg')}/>
             </ImageZoom>
             
-            <GreenButton
+            <GreenButtonWithIcon
               icon="crop-free"
               text="Scan to loan or return mug"
               onPress={() => this.props.navigation.navigate('ScanScreen')}

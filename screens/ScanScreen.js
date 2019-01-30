@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Modal,Alert, Linking, Dimensions, LayoutAnimation, Text, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import { Modal,Alert, Linking, Dimensions, LayoutAnimation, Text, TextInput, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 
 import {Icon} from 'react-native-elements';
 
+import GreenButton from '../components/GreenButton.js';
+
 export default class ScanScreen extends Component {
+
   static navigationOptions = ({ navigation }) => {
     return {
       headerRight: (
@@ -20,7 +23,7 @@ export default class ScanScreen extends Component {
   state = {
     hasCameraPermission: null,
     lastScannedUrl: null,
-    ModalVisibleStatus: false 
+    ModalVisibleStatus: false
   };
 
   componentDidMount() {
@@ -65,17 +68,37 @@ export default class ScanScreen extends Component {
               ? <Text style={{ color: '#fff' }}>
                   Camera permission is not granted
                 </Text>
-              : <BarCodeScanner
-                  onBarCodeRead={this._handleBarCodeRead}
-                  style={{
-                    height: Dimensions.get('window').height,
-                    width: Dimensions.get('window').width,
-                  }}
-
-                />}
+              : <View>
+                  <BarCodeScanner
+                    onBarCodeRead={this._handleBarCodeRead}
+                    style={{
+                      height: Dimensions.get('window').height-100,
+                      width: Dimensions.get('window').width,
+                    }}
+                  />
+                  <View style={{backgroundColor: 'white', minHeight: 150, flexDirection:'row', justifyContent:'center'}}>
+                    <TextInput
+                      style={styles.mugCodeButton}
+                      onChangeText={(text) => this.setState({text})}
+                      value={this.state.text}
+                      placeholder="Or enter Mug Code here"
+                    />
+                    <GreenButton
+                      text="OK"
+                      buttonWidth='50'
+                      buttonHeight='40'
+                      buttonMarginTop='20'
+                      buttonMarginLeft='10'
+                      onPress={() => this.ShowModalFunction(true)}
+                    />
+                  </View>
+                </View>
+              }
         {this._maybeRenderUrl()}
 
         <StatusBar hidden />
+
+        
 
         <Modal
           transparent={false}
@@ -176,4 +199,14 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.8)',
     fontSize: 18,
   },
+  mugCodeButton: {
+    marginTop: 20,
+    width: '70%',
+    height: 40, 
+    borderColor: '#5FB67D', 
+    borderWidth: 3,
+    borderRadius: 10,
+    padding: 10,
+    textAlign: 'center'
+  }
 });
