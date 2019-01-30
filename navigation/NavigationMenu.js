@@ -84,6 +84,18 @@ const FAQScreenStack = createStackNavigator(
 
 const MenuStack = createDrawerNavigator(
   {
+    "ScanScreenStack": {
+      screen: ScanScreenStack,
+      navigationOptions: {
+        title: 'Scan QR Code',
+        drawerIcon: () => (
+          <Image
+            source={require("../assets/images/scan-icon.png")}
+            style={{marginLeft: 5, width: 24, height: 24}}
+          />          
+        )
+      }
+    },
     "LocateScreen": { 
       screen: LocateScreenStack,
       navigationOptions: {
@@ -94,12 +106,6 @@ const MenuStack = createDrawerNavigator(
             style={{marginLeft: 5, width: 24, height: 24}}
           />          
         ) 
-      }
-    },
-    "ScanScreenStack": {
-      screen: ScanScreenStack,
-      navigationOptions: {
-          drawerLabel: () => null
       }
     },
     "RewardsScreen": { 
