@@ -33,6 +33,6 @@ export const RootStack = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'MenuStack'
+    initialRouteName: 'TutorialStack'
   }
 )
