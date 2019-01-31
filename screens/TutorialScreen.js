@@ -12,6 +12,8 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import {Dimensions} from 'react-native';
 import { LinearGradient } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity} from 'react-native';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -328,9 +330,12 @@ export default class App extends React.Component {
 
   _renderNextButton = () => {
     return (
-      <View>
+      <TouchableOpacity 
+				onPress={() => this.props.navigation.navigate('LocateScreen')}
+		  >
         <Text>Skip</Text>
-      </View>
+    </TouchableOpacity>
+
     );
   }
 
