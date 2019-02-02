@@ -7,6 +7,8 @@ import {
 
 import {Icon} from 'react-native-elements';
 import GreyBox from '../components/GreyBox.js';
+import GreenButton from '../components/GreenButton.js';
+import globalStyles from '../styles/Styles.js';
 
 export default class AccountScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
