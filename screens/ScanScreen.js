@@ -85,10 +85,10 @@ export default class ScanScreen extends Component {
                     />
                     <GreenButton
                       text="OK"
-                      buttonWidth='50'
-                      buttonHeight='40'
-                      buttonMarginTop='20'
-                      buttonMarginLeft='10'
+                      buttonWidth={ 50 }
+                      buttonHeight={ 40 }
+                      buttonMarginTop={ 20 }
+                      buttonMarginLeft={ 10 }
                       onPress={() => this.ShowModalFunction(true)}
                     />
                   </View>

@@ -8,18 +8,14 @@ import {Icon} from 'react-native-elements';
 class GreenButton extends Component {
 	
 	render() {
-		const { onPress, text, buttonWidth, buttonHeight='40', buttonMarginTop, buttonMarginLeft} = this.props;
-		let buttonWidthNumber = parseInt(buttonWidth.replace(/['"]+/g, ''), 10)
-		let buttonHeightNumber = parseInt(buttonHeight.replace(/['"]+/g, ''), 10)
-		let buttonMarginTopNumber = parseInt(buttonMarginTop.replace(/['"]+/g, ''), 10)
-		let buttonMarginLeftNumber = parseInt(buttonMarginLeft.replace(/['"]+/g, ''), 10)
-
+		const { onPress, text, buttonWidth, buttonHeight, buttonMarginTop, buttonMarginLeft} = this.props;
+		
 		return (
 		  <TouchableOpacity 
-			  style={[styles.buttonStyle,{width: buttonWidthNumber, height: buttonHeightNumber, marginTop: buttonMarginTopNumber, marginLeft: buttonMarginLeftNumber}]}
+			  style={[styles.buttonStyle,{width: buttonWidth, height: buttonHeight, marginTop: buttonMarginTop, marginLeft: buttonMarginLeft}]}
 				onPress={() => onPress()}
 		  >
-			<Text style={styles.textStyle}>
+				<Text style={styles.textStyle}>
 	        	{text}
 			</Text>
 		  </TouchableOpacity>
@@ -28,7 +24,10 @@ class GreenButton extends Component {
 }
 
 GreenButton.propTypes = {
-  buttonWidth: PropTypes.string.isRequired,
+  buttonWidth: PropTypes.number.isRequired,
+  buttonHeight: PropTypes.number.isRequired,
+  buttonMarginTop: PropTypes.number.isRequired,
+  buttonMarginLeft: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired
 };
