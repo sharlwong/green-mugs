@@ -8,11 +8,11 @@ import {Icon} from 'react-native-elements';
 class GreenButtonWithIcon extends Component {
 	
 	render() {
-		const { onPress, text, icon } = this.props;
+		const { onPress, text, icon, buttonWidth, buttonHeight } = this.props;
 
 		return (
 		  <TouchableOpacity 
-			  style={styles.buttonStyle}
+			  style={[styles.buttonStyle, {width:buttonWidth}, {height:buttonHeight}]}
 				onPress={() => onPress()}
 		  >
 		  	<Icon
@@ -42,8 +42,9 @@ const styles = StyleSheet.create({
   textStyle: {
 	  fontSize: 16,
 		color: '#ffffff',
-		textAlign:'center'
+		textAlign:'center',
 	},
+
   buttonStyle: {
     width: '100%',
     backgroundColor: '#5FB67D',
