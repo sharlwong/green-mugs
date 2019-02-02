@@ -26,7 +26,7 @@ export default class AccountScreen extends React.Component {
       <ScrollView style={styles.container}>
         <Text>My Account</Text>
         <GreyBox 
-          positionFromTop: '200'
+          marginTop = '20' 
         />
       </ScrollView>
     );

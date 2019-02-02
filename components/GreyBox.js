@@ -8,11 +8,11 @@ import {
 
 class GreyBox extends Component {
 	render() {
-		const { positionFromTop } = this.props;
-		let positionFromTopNumber = parseInt(positionFromTop.replace(/['"]+/g, ''), 10)
+		const { marginTop } = this.props;
+		let marginTopNumber = parseInt(marginTop.replace(/['"]+/g, ''), 10)
 
 		return (
-			<View style={[styles.boxStyle, {top: positionFromTopNumber}]} />
+			<View style={[styles.boxStyle, {marginTop: marginTopNumber}]} />
 		);
 	}
 }
@@ -20,9 +20,10 @@ class GreyBox extends Component {
 const styles = StyleSheet.create({
 	boxStyle: {
 		borderRadius: 9,
+		borderWidth: 1,
+		borderColor: "#D3D3D3",
 		width: 334,
-		height: 168,
-		shadowColor: rgba(0, 0, 0, 0.25)
+		height: 168
 	} 
 });
 
