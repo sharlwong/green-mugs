@@ -29,7 +29,6 @@ export default class AccountScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        /* Profile section */
         <View style={[globalStyles.boxStyle, {marginTop: 20, width: 334, height: 168}]}>
           
 
@@ -61,7 +60,6 @@ export default class AccountScreen extends React.Component {
           </View> 
         </View>
         
-        /* Wallet section */
         <View style={[globalStyles.boxStyle, styles.walletsection]}>
          
           <Text style={styles.title}>MY GREEN WALLET</Text>
@@ -117,8 +115,6 @@ export default class AccountScreen extends React.Component {
             </View>
     
         </View>
-
->>>>>>> Built My Green Wallet section of My Account screen
       </View>
     );
   }
