@@ -1,52 +1,42 @@
-import React, 
-{ Component } from 'react';
-import PropTypes from 'prop-types';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
 
-import {Icon} from 'react-native-elements';
+import { 
+	View,
+	Text,
+	StyleSheet
+} from 'react-native';
 
 class GreyBox extends Component {
-	
 	render() {
-		const { onPress, text, buttonWidth='100', buttonHeight='40', buttonMarginTop, buttonMarginLeft } = this.props;
-		let buttonWidthNumber = parseInt(buttonWidth.replace(/['"]+/g, ''), 10)
-		let buttonHeightNumber = parseInt(buttonHeight.replace(/['"]+/g, ''), 10)
-		let buttonMarginTopNumber = parseInt(buttonMarginTop.replace(/['"]+/g, ''), 10)
-		let buttonMarginLeftNumber = parseInt(buttonMarginLeft.replace(/['"]+/g, ''), 10)
+		const { positionFromTop } = this.props;
+		let positionFromTopNumber = parseInt(positionFromTop.replace(/['"]+/g, ''), 10)
 
 		return (
-		  <TouchableOpacity 
-			  style={[styles.buttonStyle,{width: buttonWidthNumber, height: buttonHeightNumber, marginTop: buttonMarginTopNumber, marginLeft: buttonMarginLeftNumber}]}
-				onPress={() => onPress()}
-		  >
-				<Text style={styles.textStyle}>
-	        	{text}
-				</Text>
-		  </TouchableOpacity>
+			<View style={[styles.boxStyle, {top: positionFromTopNumber}]} />
 		);
 	}
 }
 
-GreyBox.propTypes = {
-  buttonWidth: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired
-};
-
 const styles = StyleSheet.create({
-  textStyle: {
-	  fontSize: 16,
-		color: '#ffffff',
-		textAlign:'center'
-	},
-  buttonStyle: {
-    backgroundColor: '#5FB67D',
-    borderRadius: 10,
-    padding: 10,
-    textAlign: 'center',
-    flexDirection: 'row', 
-    justifyContent: 'center'
-  }
+	boxStyle: {
+		borderRadius: 9,
+		width: 334,
+		height: 168,
+		shadowColor: rgba(0, 0, 0, 0.25)
+	} 
 });
 
+
 export default GreyBox;
+
+
+// position: absolute;
+// width: 334px;
+// height: 168px;
+// left: 21px;
+// top: 79px;
+
+// background: #FFFFFF;
+// /* All around shadow */
+// box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+// border-radius: 9px;

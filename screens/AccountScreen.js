@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import {Icon} from 'react-native-elements';
+import GreyBox from '../components/GreyBox.js';
 
 export default class AccountScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -24,6 +25,9 @@ export default class AccountScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Text>My Account</Text>
+        <GreyBox 
+          positionFromTop: '200'
+        />
       </ScrollView>
     );
   }
@@ -32,7 +36,7 @@ export default class AccountScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 15,  
     backgroundColor: '#fff',
   },
 });
