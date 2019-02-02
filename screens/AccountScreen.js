@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-	ScrollView, 
+	View, 
 	StyleSheet, 
 	Text 
 } from 'react-native';
@@ -23,12 +23,14 @@ export default class AccountScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Text>My Account</Text>
         <GreyBox 
-          marginTop = '20' 
+          boxMarginTop= { 20 }
+          boxWidth = { 200 }
+          boxHeight = { 200 }
         />
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -38,5 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,  
     backgroundColor: '#fff',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
 });

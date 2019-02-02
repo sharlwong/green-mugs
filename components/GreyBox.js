@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import { 
 	View,
 	Text,
@@ -8,36 +8,29 @@ import {
 
 class GreyBox extends Component {
 	render() {
-		const { marginTop } = this.props;
-		let marginTopNumber = parseInt(marginTop.replace(/['"]+/g, ''), 10)
-
+		const { boxMarginTop, boxWidth, boxHeight } = this.props;
+		
 		return (
-			<View style={[styles.boxStyle, {marginTop: marginTopNumber}]} />
+			<View style={[styles.boxStyle, {marginTop: boxMarginTop, width: boxWidth, height: boxHeight}]} />
 		);
 	}
 }
+
+GreyBox.propTypes = {
+  boxMarginTop: PropTypes.number.isRequired,
+  boxWidth: PropTypes.number.isRequired,
+  boxHeight: PropTypes.number.isRequired
+};
+
 
 const styles = StyleSheet.create({
 	boxStyle: {
 		borderRadius: 9,
 		borderWidth: 1,
 		borderColor: "#D3D3D3",
-		width: 334,
-		height: 168
+		padding: 20
 	} 
 });
 
 
 export default GreyBox;
-
-
-// position: absolute;
-// width: 334px;
-// height: 168px;
-// left: 21px;
-// top: 79px;
-
-// background: #FFFFFF;
-// /* All around shadow */
-// box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-// border-radius: 9px;
