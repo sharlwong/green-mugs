@@ -32,7 +32,7 @@ export default class AccountScreen extends React.Component {
         <View style={[globalStyles.boxStyle, {marginTop: 20, width: 334, height: 168}]}>
           
 
-          <Text style={{fontFamily: 'Roboto-Bold', color:'#5FB67D', marginLeft: 20, marginTop: 0}}> PROFILE</Text>
+          <Text style={{fontFamily: 'Roboto-Bold', color:'#5FB67D', marginLeft: 0, marginTop: 0}}> PROFILE</Text>
           <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
             <Image source={require("../assets/images/avatar-penguin.png")} 
             style={{marginTop: 10, marginLeft: 25}}/>
@@ -90,30 +90,21 @@ export default class AccountScreen extends React.Component {
 
         <View style={[globalStyles.boxStyle, styles.mymugsection]}>
          
-          <Text style={styles.title}>MY GREEN WALLET</Text>
+          <Text style={styles.title}>MY MUGS</Text>
           
           <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-            <Image source={require('../assets/images/wallet.png')} style={styles.wallet}/>
-            <Text style={styles.balance}>Current Amount:</Text>
-            <Text style={styles.amount}>S$10</Text>
+            <Image source={require('../assets/images/Earth.png')} style={styles.wallet}/>
+            <Text style={styles.balance}>I saved the earth of</Text>
+            <Text style={styles.mugs}>5 mugs</Text>
           </View>
 
-          <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
-            <GreenButtonWithIcon
-              buttonWidth={120}
-              buttonHeight={50}
-              icon = "autorenew"
-              text="Withdraw"
-              onPress={() => this.props.navigation.navigate('ScanScreen')} style={styles.withdraw}/>
+          <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
+            <Image source={require('../assets/images/coffee.png')} style={styles.wallet}/>
+            <Text style={styles.balance}>I still need to return</Text>
+            <Text style={styles.mugsreturn}>2 mugs</Text>
+          </View>
 
-            <GreenButtonWithIcon
-              buttonWidth={120}
-              buttonHeight={50}
-              icon = "attach-money"
-              text="Top Up"
-              onPress={() => this.props.navigation.navigate('ScanScreen')} style={styles.topup}/>
-            </View>
-    
+
         </View>
       </View>
     );
@@ -130,7 +121,7 @@ const styles = StyleSheet.create({
     },
 
     walletsection: {
-      marginTop: 263,
+      marginTop: 20,
       width: 334,
       height: 193,
     },
@@ -171,5 +162,16 @@ const styles = StyleSheet.create({
     topup: {
     },
 
+    mugs: {
+      fontFamily:'Roboto-Bold',
+      fontSize:24,
+      color:'#5FB67D'
+    },
+
+    mugsreturn: {
+      fontFamily:'Roboto-Bold',
+      fontSize:24,
+      color:'#FB4B4B'
+    },
 });
 
