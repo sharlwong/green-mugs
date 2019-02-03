@@ -6,7 +6,8 @@ import {
   View,
   Image,
   ImageBackground,
-  TouchableHighlight
+  TouchableHighlight,
+  Button
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {Dimensions} from 'react-native';
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         textAlign: 'center',
         fontWeight:'bold',
-        fontFamily:'Roboto',
+        fontFamily:'Roboto-Bold',
         fontSize:18
     },
     title2: {
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         textAlign: 'center',
         fontWeight:'bold',
-        fontFamily:'Roboto',
+        fontFamily:'Roboto-Bold',
         fontSize:18
     },
     subtitle: {
@@ -98,15 +99,6 @@ const styles = StyleSheet.create({
         width:Dimensions.get('window').width,
         height:148,
         backgroundColor: '#5FB67D',
-        borderRadius:12,
-        color: '#abcdef',
-        alignItems: 'center'
-    },
-    boxifinal: {
-        top:162,
-        width:Dimensions.get('window').width,
-        height:88,
-        backgroundColor: '#ffffff',
         borderRadius:12,
         color: '#abcdef',
         alignItems: 'center'
@@ -169,7 +161,7 @@ const Slides = [
         greenbullet1: require('../assets/images/Bullet1.jpg'),
         bullet2: require('../assets/images/Bullet2.jpg'),
         imageStyle: styles.image,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
     },
 
     {
@@ -247,7 +239,8 @@ const Slides = [
         boxifinalStyle: styles.boxifinal,
         //image: require('../assets/images/Tuto5.jpg'),
         //imageStyle: styles.image,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        mybutton: "hey"
     }
 ];
 
@@ -317,6 +310,9 @@ export default class App extends React.Component {
 
   _renderDoneButton = () => {
     return (
+      <TouchableOpacity 
+				onPress={() => this.props.navigation.navigate('LocateScreen')}
+		  >
       <View style={styles.buttonCircle}>
         <Ionicons
           name="md-checkmark"
@@ -325,6 +321,7 @@ export default class App extends React.Component {
           style={{ backgroundColor: 'transparent' }}
         />
       </View>
+      </TouchableOpacity>
     );
   }
 
@@ -341,7 +338,7 @@ export default class App extends React.Component {
 
   _renderItem = props => (
     <View style={{backgroundColor: '#ffffff', flex: 1}}>
-        <Text style={styles.boxi}>{props.boxi} </Text>
+        <Text style={styles.boxi}>{props.boxi} </Text>        
         <Text style={styles.title}>{props.title} </Text>
         <Text style={styles.subtitle}>{props.subtitle} </Text>
         <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
