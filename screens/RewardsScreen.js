@@ -13,7 +13,7 @@ import GreyBox from '../components/GreyBox.js';
 import GreenButton from '../components/GreenButton.js';
 
 import { Component } from 'react';
-import { BarCodeScanner, Permissions } from 'expo';
+import { BarCodeScanner, Permissions, BlurView } from 'expo';
 import { Alert,
     Linking,
     Modal,
@@ -204,7 +204,7 @@ export default class RewardScreen extends Component {
           visible={this.state.ModalVisibleStatus} 
           onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
 
-            <View style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
+            <BlurView tint="light" intensity={70} style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
               <View style={styles.modalInsideView}>
                     <Image source={this.state.uri} style={{flex: 1, alignSelf: 'stretch', width: undefined,height: undefined}} resizeMode='contain' />
                     <Text style={{marginBottom:20}}>Rewards to come soon!</Text>
@@ -221,7 +221,7 @@ export default class RewardScreen extends Component {
                     />
                     
                 </View>
-             </View>
+             </BlurView>
         </Modal>
 
         </View>
