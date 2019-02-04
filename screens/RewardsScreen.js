@@ -34,20 +34,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     title: {
-      position:'absolute',
-      top:86,
+      marginTop:26,
       left:31,
-      fontWeight:'bold',
-        fontFamily:'Roboto',
-        fontSize:14,
-        color:'#5FB67D'
+      fontFamily:'Roboto-Bold',
+      fontSize:14,
+      color:'#5FB67D'
     },
     box: {
       position:'absolute',
-      top:120,
+      top:60,
       left:31,
       width:Dimensions.get('window').width-62,
-      height:59,
+      height:80,
       borderRadius: 9,
       borderWidth: 0.5,
       borderColor: '#000000',
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     },
     points: {
       position:'absolute',
-      top:125,
+      top:81,
       left:69,
         fontFamily:'Roboto',
         fontSize:14,
@@ -66,12 +64,11 @@ const styles = StyleSheet.create({
     },
     fifty: {
       position:'absolute',
-      top:136,
+      top:85,
       left:212,
-        fontWeight:'bold',
-        fontFamily:'Roboto',
-        fontSize:18,
-        color:'#5FB67D'
+      fontFamily:'Roboto-Bold',
+      fontSize:20,
+      color:'#5FB67D'
     },
     box2: {
       flex:1,
@@ -92,12 +89,23 @@ const styles = StyleSheet.create({
     },
     textReward: {
       fontWeight:'bold',
-        fontFamily:'Roboto',
-        fontSize:14,
-        color:'#000000',
-        position:'absolute',
-        justifyContent:'center',
-        textAlign:'center'
+      fontFamily:'Roboto',
+      fontSize:14,
+      color:'#000000',
+      position:'absolute',
+      justifyContent:'center',
+      textAlign:'center'
+    },
+    modalInsideView: {
+      height:400, 
+      width:400, 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor:"#ffffff",
+      borderRadius: 9,
+      borderWidth: 0.5,
+      borderColor: '#000000',
+      padding: 20
     }
 });
 
@@ -146,11 +154,11 @@ export default class RewardScreen extends Component {
           <View style={{flexDirection:'column',alignItems:'center'}}>
           <GreyBox
             boxBackgroundColor="#F7F7F7"
-            boxMarginTop= { 205 }
+            boxMarginTop= { 125 }
             boxWidth = { Dimensions.get('window').width-62 }
             boxHeight = { 90 }/>
-          <Text style={[styles.textReward,{top:275}]}>Food & Beverage</Text>
-          <Image source={require('../assets/images/FandB.jpg')} style={{position:'absolute', top:210}} />
+          <Text style={[styles.textReward,{top:195}]}>Food & Beverage</Text>
+          <Image source={require('../assets/images/FandB.jpg')} style={{position:'absolute', top:130}} />
            </View>
         </TouchableOpacity>
 
@@ -197,32 +205,37 @@ export default class RewardScreen extends Component {
           onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
 
             <View style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
-              <View style={[styles.ModalInsideView,{height:400, width:400, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff"}]}>
-                {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
+              <View style={styles.modalInsideView}>
                     <Image source={this.state.uri} style={{flex: 1, alignSelf: 'stretch', width: undefined,height: undefined}} resizeMode='contain' />
                     <Text style={{marginBottom:20}}>Rewards to come soon!</Text>
-                    <TouchableOpacity onPress={() => { 
+                    <GreenButton
+                      text="Back to Rewards Page"  
+                      onPress={() => {
                         this.ShowModalFunction(!this.state.ModalVisibleStatus);
                         this.props.navigation.navigate('RewardScreen');
-                      }}>
-                    <Text style={{backgroundColor:"#5FB67D",color:"#ffffff",fontWeight:'bold',fontSize:18,fontFamily:'Roboto',marginBottom:40, justifyContent: 'center', alignItems: 'center'}}>BACK TO REWARDS</Text>
-                    </TouchableOpacity>
+                      }}
+                      buttonWidth= { 200 }
+                      buttonHeight= { 40 }
+                      buttonMarginTop= { 0 }
+                      buttonMarginLeft= { 0 }
+                    />
+                    
                 </View>
              </View>
         </Modal>
 
         </View>
         /*   
-        <Text style={[styles.box2,{top:520}]} />
+        <Text style={[styles.box2,{top:460}]} />
         <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-        <Text style={[styles.textReward,{top:275}]}>Food & Beverage</Text>
-        <Text style={[styles.textReward,{top:380}]}>Lifestyle</Text>
-        <Text style={[styles.textReward,{top:485}]}>Travel & Leisure</Text>
-        <Text style={[styles.textReward,{top:590}]}>Environment</Text>
-        <Image source={require('../assets/images/FandB.jpg')} style={{position:'absolute', top:210}} />
-        <Image source={require('../assets/images/Lifestyle.jpg')} style={{position:'absolute', top:325}} />
-        <Image source={require('../assets/images/travelandleisure.jpg')} style={{position:'absolute', top:430}} />
-        <Image source={require('../assets/images/environment.jpg')} style={{position:'absolute', top:525}} />
+        <Text style={[styles.textReward,{top:215}]}>Food & Beverage</Text>
+        <Text style={[styles.textReward,{top:320}]}>Lifestyle</Text>
+        <Text style={[styles.textReward,{top:425}]}>Travel & Leisure</Text>
+        <Text style={[styles.textReward,{top:530}]}>Environment</Text>
+        <Image source={require('../assets/images/FandB.jpg')} style={{position:'absolute', top:150}} />
+        <Image source={require('../assets/images/Lifestyle.jpg')} style={{position:'absolute', top:265}} />
+        <Image source={require('../assets/images/travelandleisure.jpg')} style={{position:'absolute', top:370}} />
+        <Image source={require('../assets/images/environment.jpg')} style={{position:'absolute', top:465}} />
         </View>
         */
     );

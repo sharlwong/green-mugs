@@ -8,10 +8,10 @@ import {
 
 class GreyBox extends Component {
 	render() {
-		const { boxMarginTop, boxWidth, boxHeight } = this.props;
+		const { boxMarginTop, boxWidth, boxHeight, boxBackgroundColor } = this.props;
 		
 		return (
-			<View style={[styles.boxStyle, {marginTop: boxMarginTop, width: boxWidth, height: boxHeight}]} />
+			<View style={[styles.boxStyle, {marginTop: boxMarginTop, width: boxWidth, height: boxHeight, backgroundColor: boxBackgroundColor}]} />
 		);
 	}
 }
