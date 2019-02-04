@@ -30,8 +30,16 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
-        require('./assets/images/robot-prod.png'),
+        require('./assets/images/pokemon-go-map-copy.jpg'),
+        require('./assets/images/green-mugs-logo.png'),
+        require('./assets/images/avatar-penguin.png'),
+        require('./assets/images/wallet.png'),
+        require('./assets/images/Earth.png'),
+        require('./assets/images/coffee.png'),
+        require('./assets/images/F_B.jpg'),
+        require('./assets/images/massage.jpg'),
+        require('./assets/images/travel.jpg'),
+        require('./assets/images/tree.jpg'),
       ]),
       Font.loadAsync({
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),

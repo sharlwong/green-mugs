@@ -16,6 +16,7 @@ import ImageZoom from 'react-native-image-pan-zoom';
 import {Icon} from 'react-native-elements';
 
 import GreenButtonWithIcon from '../components/GreenButtonWithIcon.js';
+import map from '../assets/images/pokemon-go-map-copy.jpg';
 
 export default class LocateScreen extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -40,7 +41,7 @@ export default class LocateScreen extends Component {
                   imageHeight={600}
                   style={{borderRadius:10, marginTop: 10}}
             >
-              <Image source={require('../assets/images/pokemon-go-map-copy.jpg')}/>
+              <Image source={map}/>
             </ImageZoom>
             
             <GreenButtonWithIcon
