@@ -3,10 +3,13 @@ import {
 	View, 
 	StyleSheet, 
 	Text,
-  Image 
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 import {Icon} from 'react-native-elements';
+
+
 import GreyBox from '../components/GreyBox.js';
 import GreenButton from '../components/GreenButton.js';
 import globalStyles from '../styles/Styles.js';
@@ -32,24 +35,41 @@ export default class AccountScreen extends React.Component {
     }  
   }
   
-
-  componentDidMount(){
-    this.handleWalletAmountAfterScanning();
-  }
-
-  handleWalletAmountAfterScanning() {
+  componentDidMount = () => {
+    AsyncStorage.getItem('walletAmount').then((value) => this.setState({ 'walletAmount': value }));
     const { navigation } = this.props;
     const walletAction = navigation.getParam('walletAction', 'none');
-
-    currentAmount = this.state.walletAmount;
-
-    if (walletAction == 'deduct') {
-        this.setState({walletAmount:  currentAmount - 5});
-
-    } else if (walletAction == 'add') {
-        this.setState({walletAmount:  currentAmount + 5});
-    }
+    this.handleWalletAmount(walletAction);
   }
+
+
+  handleWalletAmount = async (walletAction) => {
+    try {
+        currentAmount = parseInt((await AsyncStorage.getItem('walletAmount')),10);
+        
+        if (walletAction == 'deduct' && currentAmount > 0) {
+          newAmount = currentAmount - 5;
+          this.state.walletAmount = newAmount;
+          await AsyncStorage.setItem('walletAmount', newAmount.toString());
+          
+        } else if (walletAction == 'add') {
+          newAmount = currentAmount + 5;
+          this.state.walletAmount = newAmount;
+          
+          await AsyncStorage.setItem('walletAmount', newAmount.toString());
+        }
+        this.forceUpdate();
+    } catch (error) {
+        currentAmount = this.state.walletAmount;
+        if (walletAction == 'deduct') {
+          this.setState({walletAmount:  currentAmount - 5});
+
+        } else if (walletAction == 'add') {
+          this.setState({walletAmount:  currentAmount + 5});
+        }
+    }
+  };
+
 
   render() {
     return (
@@ -102,14 +122,17 @@ export default class AccountScreen extends React.Component {
               buttonHeight={50}
               icon = "autorenew"
               text="Withdraw"
-              onPress={() => this.props.navigation.navigate('ScanScreen')} style={styles.withdraw}/>
+              style={styles.withdraw}
+              onPress={() => this.handleWalletAmount('deduct')}
+            />
 
             <GreenButtonWithIcon
               buttonWidth={120}
               buttonHeight={50}
               icon = "attach-money"
               text="Top Up"
-              onPress={() => this.props.navigation.navigate('ScanScreen')} style={styles.topup}/>
+              onPress={() => this.handleWalletAmount('add')}
+              style={styles.topup}/>
             </View>
     
         </View>
