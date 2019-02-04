@@ -9,21 +9,15 @@ https://github.com/vhpoet/react-native-styling-cheat-sheet
 
 BarCodeScanner and Permissions libraries from Expo was used to build the functionality of scanning a QR code.
 
-(No special installation steps required.)
-
 Read here for more details on how we implemented the modal that pops up after QR code is scanned:
 https://reactnativecode.com/react-native-modal-ios-android/
 
 ## Navigation Menu
 
-TODO:
-Run `npm install --save react-native-elements`
-
 The react-navigation library was used to build the navigation bar.
 
 We adapted our implementation of the drawer navigation menu from this tutorial:
 https://shift.infinite.red/react-navigation-drawer-tutorial-a802fc3ee6dc
-
 
 We adapted our implemention of the hamburger menu button from this Github thread:
 https://github.com/react-navigation/react-navigation/issues/1122
@@ -38,3 +32,16 @@ https://docs.expo.io/versions/latest/guides/using-custom-fonts/
 
 Use Font.loadAsync function to install custom font:
 https://github.com/GeekyAnts/NativeBase/issues/1466
+
+## Dynamically set Wallet Amount
+
+We used react-native's `AsyncStorage` library to persist and store the wallet amount:
+
+https://medium.com/building-with-react-native/what-is-asyncstorage-in-react-native-and-how-you-to-use-it-with-app-state-manager-1x09-b8c636ce5f6e
+
+https://pusher.com/tutorials/persisting-data-react-native
+
+We referred to this threat to figure out how to pass params into a specific screen:
+
+https://github.com/react-navigation/react-navigation/issues/3787
+
