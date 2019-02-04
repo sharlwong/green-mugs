@@ -18,7 +18,7 @@ import HeaderBar from './HeaderBar.js'
 
 const LocateScreenStack = createStackNavigator(
   {
-    LocateScreen: {
+    LocateScreenItself: {
       screen: LocateScreen
     }
   },
@@ -31,7 +31,7 @@ const LocateScreenStack = createStackNavigator(
 
 const ScanScreenStack = createStackNavigator(
   {
-    ScanScreen: {
+    ScanScreenItself: {
       screen: ScanScreen
     }
   },
@@ -45,7 +45,7 @@ const ScanScreenStack = createStackNavigator(
 
 const RewardsScreenStack = createStackNavigator(
   {
-    RewardsScreen: {
+    RewardsScreenItself: {
       screen: RewardsScreen
     }
   },
@@ -58,7 +58,7 @@ const RewardsScreenStack = createStackNavigator(
 
 const AccountScreenStack = createStackNavigator(
   {
-    AccountScreen: {
+    AccountScreenItself: {
       screen: AccountScreen
     }
   },
@@ -71,7 +71,7 @@ const AccountScreenStack = createStackNavigator(
 
 const FAQScreenStack = createStackNavigator(
   {
-    FAQScreen: {
+    FAQScreenItself: {
       screen: FAQScreen
     }
   },

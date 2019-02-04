@@ -111,10 +111,10 @@ export default class ScanScreen extends Component {
                 {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
                     <Text style={styles.TextStyle}>Thank you for making a difference through Green Mugs!</Text>
                     <Button 
-                      title="Click Here To Hide Modal" 
+                      title="Click Here To Deduct From Wallet" 
                       onPress={() => { 
                         this.ShowModalFunction(!this.state.ModalVisibleStatus);
-                        this.props.navigation.navigate('LocateScreen');
+                        this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
                       }}
                     />
                 </View>

@@ -25,6 +25,32 @@ export default class AccountScreen extends React.Component {
     };
   };
 
+  constructor(props){
+    super(props);
+    this.state = {
+      walletAmount: 10
+    }  
+  }
+  
+
+  componentDidMount(){
+    this.handleWalletAmountAfterScanning();
+  }
+
+  handleWalletAmountAfterScanning() {
+    const { navigation } = this.props;
+    const walletAction = navigation.getParam('walletAction', 'none');
+
+    currentAmount = this.state.walletAmount;
+
+    if (walletAction == 'deduct') {
+        this.setState({walletAmount:  currentAmount - 5});
+
+    } else if (walletAction == 'add') {
+        this.setState({walletAmount:  currentAmount + 5});
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -67,7 +93,7 @@ export default class AccountScreen extends React.Component {
           <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
             <Image source={require('../assets/images/wallet.png')} style={styles.wallet}/>
             <Text style={styles.balance}>Current Amount:</Text>
-            <Text style={styles.amount}>S$10</Text>
+            <Text style={styles.amount}>S${ this.state.walletAmount }</Text>
           </View>
 
           <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
