@@ -4,6 +4,8 @@ import {
 	StyleSheet, 
 	Text,
   Image,
+  Modal,
+  TouchableOpacity,
   AsyncStorage
 } from 'react-native';
 
@@ -28,10 +30,15 @@ export default class AccountScreen extends React.Component {
     };
   };
 
+  state = {
+    ModalVisibleStatus: false
+  }
+
   constructor(props){
     super(props);
     this.state = {
-      walletAmount: 10
+      walletAmount: 10,
+      ModalVisibleStatus: false
     }  
   }
   
@@ -67,6 +74,11 @@ export default class AccountScreen extends React.Component {
     } catch (error) {
        console.log(error);
     }
+  };
+
+
+  ShowModalFunction(visible) {
+    this.setState({ModalVisibleStatus: visible});
   };
 
   render() {
@@ -129,7 +141,7 @@ export default class AccountScreen extends React.Component {
               buttonHeight={50}
               icon = "attach-money"
               text="Top Up"
-              onPress={() => this.handleWalletAmount('add')}
+              onPress={() => this.ShowModalFunction(true)}
               style={styles.topup}/>
             </View>
     
@@ -153,6 +165,66 @@ export default class AccountScreen extends React.Component {
 
 
         </View>
+
+         <Modal
+          transparent={true}
+          animationType={"slide"}
+          visible={this.state.ModalVisibleStatus} 
+          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
+          <View style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
+              <View style={[globalStyles.boxStyle, styles.popupbox]}>
+                  <View style={{justifyContent: 'left', alignItems: 'left',height:30}}>    
+                      <Icon
+                        name="highlight-off"
+                        onPress={() => { 
+                          this.ShowModalFunction(!this.state.ModalVisibleStatus);
+                          //this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
+                        }}
+                        iconStyle={{marginLeft: 0, left:0}}
+                      />
+                  </View>
+                  <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={styles.TextPopUp}>Your Green Wallet has no available money for deposit.</Text>
+                    
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
+                    <Icon 
+                      name="attach-money"
+                      color="#5FB67D"
+                      iconStyle={{marginLeft: 20, left:0}}
+                    />
+                    <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 18, textAlign:'center', marginRight:20}}>Top Up now to start using Green Mugs</Text>
+                    </View>
+
+                    <GreenButton
+                      text="Top Up $5"
+                      buttonWidth={ 250 }
+                      buttonHeight={ 70 }
+                      buttonMarginTop={ 60 }
+                      buttonMarginLeft={ 0 }
+                      onPress={() => {
+                        this.ShowModalFunction(!this.state.ModalVisibleStatus);
+                        this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'add'}});
+                      }}
+                      style={styles.topup}/>
+
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40}}>
+                    <Text style={{marginTop:20, fontFamily:'Roboto-Bold', fontSize: 36, color:'#5FB67D'}}>$5</Text>
+                    <Image source={require('../assets/images/top_up.jpg')} />
+                    </View>
+
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
+                    <Icon 
+                      name="redeem"
+                      color="#5FB67D"
+                      iconStyle={{marginLeft: 20, left:0}}
+                    />
+                    <Text style={{ fontFamily: 'Roboto', fontSize: 14, textAlign:'center', marginRight:20}}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
+                    </View>
+
+                  </View>
+                </View>
+            </View>
+        </Modal>
       </View>
     );
   }
@@ -207,6 +279,7 @@ const styles = StyleSheet.create({
     },
 
     topup: {
+      fontFamily:"Roboto-Bold",
     },
 
     mugs: {
@@ -220,5 +293,33 @@ const styles = StyleSheet.create({
       fontSize:24,
       color:'#FB4B4B'
     },
+
+    popupbox: {
+    marginTop: 30,
+    width: 370,
+    height: 630,
+    backgroundColor: '#F7F7F7'
+  },
+  TextPopUp: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    marginTop:10,
+    textAlign:'center'
+  },
+  normalText: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    textAlign:'center'
+  },
+  smallerText: {
+    fontFamily: 'Roboto',
+    fontSize: 16,
+    textAlign:'center'
+  },
+  verysmallText: {
+    fontFamily: 'Roboto',
+    fontSize: 14,
+    textAlign:'center'
+  }
 });
 

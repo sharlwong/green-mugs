@@ -8,6 +8,8 @@ import GreenButton from '../components/GreenButton.js';
 
 import globalStyles from '../styles/Styles.js';
 
+const fetch = require("node-fetch");
+
 export default class ScanScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
@@ -41,7 +43,7 @@ export default class ScanScreen extends Component {
 
   ShowModalFunction(visible) {
     this.setState({ModalVisibleStatus: visible});
-    //Linking.openURL('http://192.168.1.146:3000/unlock')
+    fetch('http://192.168.1.146:3000/lock')
   }
 
   _handleBarCodeRead = () => { this.ShowModalFunction(true) }
