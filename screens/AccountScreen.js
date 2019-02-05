@@ -35,41 +35,39 @@ export default class AccountScreen extends React.Component {
     }  
   }
   
-  componentDidMount = () => {
-    AsyncStorage.getItem('walletAmount').then((value) => this.setState({ 'walletAmount': value }));
+  componentDidMount = async () => {
+    const retrievedWalletAmount = await AsyncStorage.getItem('walletAmount');
+    if (retrievedWalletAmount) {
+      this.setState({ walletAmount: retrievedWalletAmount});
+    } else {
+      this.setState({walletAmount: 10});
+    }
+
     const { navigation } = this.props;
     const walletAction = navigation.getParam('walletAction', 'none');
     this.handleWalletAmount(walletAction);
-  }
-
+  };
 
   handleWalletAmount = async (walletAction) => {
     try {
-        currentAmount = parseInt((await AsyncStorage.getItem('walletAmount')),10);
+        currentAmount = parseInt(await AsyncStorage.getItem('walletAmount'), 10);
         
         if (walletAction == 'deduct' && currentAmount > 0) {
           newAmount = currentAmount - 5;
-          this.state.walletAmount = newAmount;
+          this.setState({walletAmount: newAmount});
           await AsyncStorage.setItem('walletAmount', newAmount.toString());
-          
+
         } else if (walletAction == 'add') {
           newAmount = currentAmount + 5;
-          this.state.walletAmount = newAmount;
-          
+          this.setState({walletAmount: newAmount});
           await AsyncStorage.setItem('walletAmount', newAmount.toString());
         }
+
         this.forceUpdate();
     } catch (error) {
-        currentAmount = this.state.walletAmount;
-        if (walletAction == 'deduct') {
-          this.setState({walletAmount:  currentAmount - 5});
-
-        } else if (walletAction == 'add') {
-          this.setState({walletAmount:  currentAmount + 5});
-        }
+       console.log(error);
     }
   };
-
 
   render() {
     return (
