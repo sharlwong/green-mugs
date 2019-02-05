@@ -140,7 +140,6 @@ export default class RewardScreen extends Component {
 
   _handleBarCodeRead = () => { this.ShowModalFunction(true) }
   
-
   render() {
 
     return (

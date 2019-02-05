@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Modal,Alert, Linking, Dimensions, LayoutAnimation, Text, TextInput, Button, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
-import { BarCodeScanner, Permissions } from 'expo';
+import { Modal,Alert, Dimensions, LayoutAnimation, Text, TextInput, Button, View, StatusBar, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { BarCodeScanner, Permissions, Linking } from 'expo';
 
 import {Icon} from 'react-native-elements';
 
 import GreenButton from '../components/GreenButton.js';
+
+import globalStyles from '../styles/Styles.js';
 
 export default class ScanScreen extends Component {
 
@@ -39,6 +41,7 @@ export default class ScanScreen extends Component {
 
   ShowModalFunction(visible) {
     this.setState({ModalVisibleStatus: visible});
+    //Linking.openURL('http://192.168.1.146:3000/unlock')
   }
 
   _handleBarCodeRead = () => { this.ShowModalFunction(true) }
@@ -101,24 +104,46 @@ export default class ScanScreen extends Component {
         
 
         <Modal
-          transparent={false}
+          transparent={true}
           animationType={"slide"}
           visible={this.state.ModalVisibleStatus} 
           onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
-
-            <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
-              <View style={styles.ModalInsideView}>
-                {/* Put All Your Components Here, Which You Want To Show Inside The Modal. */}
-                    <Text style={styles.TextStyle}>Thank you for making a difference through Green Mugs!</Text>
-                    <Button 
-                      title="Click Here To Deduct From Wallet" 
+          <View style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
+              <View style={[globalStyles.boxStyle, styles.popupbox]}>
+                <View style={{justifyContent: 'left', alignItems: 'left',height:30}}>    
+                    <Icon
+                      name="highlight-off"
                       onPress={() => { 
                         this.ShowModalFunction(!this.state.ModalVisibleStatus);
                         this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
                       }}
+                      iconStyle={{marginLeft: 0, left:0}}
                     />
                 </View>
-             </View>
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={styles.TextPopUp}>Thank you for making a difference through Green Mugs!</Text>
+                    <Text style={[{marginTop:40},styles.normalText]}>Mug collected from:</Text>
+                    <Text style={{marginTop:10, fontFamily: 'Roboto-Bold',fontSize: 18}}>Temasek Link 7</Text>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40}}>
+                    <Text style={{marginTop:20, fontFamily:'Roboto-Bold', fontSize: 36, color:'#FB4B4B'}}>$5</Text>
+                    <Image source={require('../assets/images/top_down.jpg')} />
+                    </View>
+                    <Text style={[{marginTop:30,color:'#FB4B4B'},styles.smallerText]}>$5 have been deducted from your</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountScreen')}>
+                    <Text style={[{marginTop:0,color:'#FB4B4B',textDecorationLine:'underline'},styles.smallerText]}>Green Wallet.</Text>
+                    </TouchableOpacity>
+                    <Text style={{marginTop:20, fontFamily: 'Roboto-Bold',fontSize: 16, textAlign:'center'}}>Get $5 back when you return your Green Mug.</Text>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
+                    <Icon 
+                      name="redeem"
+                      color="#5FB67D"
+                      iconStyle={{marginLeft: 0, left:0}}
+                    />
+                    <Text style={styles.verysmallText}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
+                    </View>
+                </View>
+                </View>
+            </View>
         </Modal>
       </View>
     );
@@ -172,7 +197,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#ffffff',
   },
   bottomBar: {
     position: 'absolute',
@@ -208,5 +233,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     textAlign: 'center'
+  },
+  popupbox: {
+    marginTop: 30,
+    width: 370,
+    height: 630,
+    backgroundColor: '#F7F7F7'
+  },
+  TextPopUp: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    marginTop:10,
+    textAlign:'center'
+  },
+  normalText: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    textAlign:'center'
+  },
+  smallerText: {
+    fontFamily: 'Roboto',
+    fontSize: 16,
+    textAlign:'center'
+  },
+  verysmallText: {
+    fontFamily: 'Roboto',
+    fontSize: 14,
+    textAlign:'center'
   }
 });
