@@ -36,13 +36,11 @@ GreenButtonWithIcon.propTypes = {
 const styles = StyleSheet.create({
 	iconStyle: {
 		marginRight: 10, 
-		color:'white', 
-		textAlign:'center'
+		color:'white'
 	},
   textStyle: {
 	  fontSize: 16,
-		color: '#ffffff',
-		textAlign:'center',
+		color: '#ffffff'
 	},
 
   buttonStyle: {
@@ -53,7 +51,8 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center',
     flexDirection: 'row', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

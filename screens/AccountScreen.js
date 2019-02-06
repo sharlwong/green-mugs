@@ -17,6 +17,8 @@ import GreenButton from '../components/GreenButton.js';
 import globalStyles from '../styles/Styles.js';
 import GreenButtonWithIcon from '../components/GreenButtonWithIcon.js';
 
+import { BlurView } from 'expo';
+
 export default class AccountScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -44,6 +46,7 @@ export default class AccountScreen extends React.Component {
   
   componentDidMount = async () => {
     const retrievedWalletAmount = await AsyncStorage.getItem('walletAmount');
+
     if (retrievedWalletAmount) {
       this.setState({ walletAmount: retrievedWalletAmount});
     } else {
@@ -128,16 +131,15 @@ export default class AccountScreen extends React.Component {
 
           <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
             <GreenButtonWithIcon
-              buttonWidth={120}
+              buttonWidth={135}
               buttonHeight={50}
               icon = "autorenew"
               text="Withdraw"
-              style={styles.withdraw}
               onPress={() => this.handleWalletAmount('deduct')}
             />
 
             <GreenButtonWithIcon
-              buttonWidth={120}
+              buttonWidth={135}
               buttonHeight={50}
               icon = "attach-money"
               text="Top Up"
@@ -171,32 +173,36 @@ export default class AccountScreen extends React.Component {
           animationType={"slide"}
           visible={this.state.ModalVisibleStatus} 
           onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
-          <View style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
+          <BlurView tint="light" intensity={70}  style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
               <View style={[globalStyles.boxStyle, styles.popupbox]}>
-                  <View style={{justifyContent: 'left', alignItems: 'left',height:30}}>    
+                  <View style={{justifyContent: 'right', alignItems: 'flex-end',height:30}}>    
                       <Icon
                         name="highlight-off"
                         onPress={() => { 
                           this.ShowModalFunction(!this.state.ModalVisibleStatus);
-                          //this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
                         }}
-                        iconStyle={{marginLeft: 0, left:0}}
+                        iconStyle={{color: '#CCCCCC'}}
                       />
                   </View>
                   <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={styles.TextPopUp}>Your Green Wallet has no available money for deposit.</Text>
                     
-                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
-                    <Icon 
-                      name="attach-money"
-                      color="#5FB67D"
-                      iconStyle={{marginLeft: 20, left:0}}
-                    />
-                    <Text style={{ fontFamily: 'Roboto-Bold', fontSize: 18, textAlign:'center', marginRight:20}}>Top Up now to start using Green Mugs</Text>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff"}}>
+                      <Icon 
+                        name="attach-money"
+                        color="#5FB67D"
+                        iconStyle={{marginLeft: 20}}
+                      />
+                      <View style={styles.topUpBanner}>
+                        <Text style={{fontSize: 18, fontFamily:'Roboto-Bold'}}>Top up now </Text> 
+                        <Text style= {{fontSize: 18, fontFamily:'Roboto'}}>to start using Green Mugs</Text>
+                      </View>
                     </View>
 
                     <GreenButton
-                      text="Top Up $5"
+                      text = 'Top Up $5'
+                      buttonFontSize = { 24 }
+                      buttonFontFamily ='Roboto-Bold'
                       buttonWidth={ 250 }
                       buttonHeight={ 70 }
                       buttonMarginTop={ 60 }
@@ -208,22 +214,22 @@ export default class AccountScreen extends React.Component {
                       style={styles.topup}/>
 
                     <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40}}>
-                    <Text style={{marginTop:20, fontFamily:'Roboto-Bold', fontSize: 36, color:'#5FB67D'}}>$5</Text>
-                    <Image source={require('../assets/images/top_up.jpg')} />
+                      <Text style={{marginTop:20, fontFamily:'Roboto-Bold', fontSize: 36, color:'#5FB67D'}}>$5</Text>
+                      <Image source={require('../assets/images/top_up.jpg')} />
                     </View>
 
-                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff"}}>
                     <Icon 
                       name="redeem"
                       color="#5FB67D"
                       iconStyle={{marginLeft: 20, left:0}}
                     />
-                    <Text style={{ fontFamily: 'Roboto', fontSize: 14, textAlign:'center', marginRight:20}}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
+                    <Text style={styles.verysmallText}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
                     </View>
 
-                  </View>
                 </View>
-            </View>
+              </View>
+          </BlurView>
         </Modal>
       </View>
     );
@@ -275,9 +281,6 @@ const styles = StyleSheet.create({
       marginTop: 5,
     },
 
-    withdraw: {
-    },
-
     topup: {
       fontFamily:"Roboto-Bold",
     },
@@ -316,10 +319,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign:'center'
   },
+  topUpBanner: {
+    textAlign:'center', 
+    padding: 20,
+    flexDirection:'row'
+  },
   verysmallText: {
     fontFamily: 'Roboto',
     fontSize: 14,
-    textAlign:'center'
+    textAlign:'center',
+    padding: 20
   }
 });
 
