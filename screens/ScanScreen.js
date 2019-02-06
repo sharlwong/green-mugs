@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal,Alert, Dimensions, LayoutAnimation, Text, TextInput, Button, View, StatusBar, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { BarCodeScanner, Permissions, Linking } from 'expo';
+import { BarCodeScanner, Permissions, Linking, BlurView } from 'expo';
 
 import {Icon} from 'react-native-elements';
 
@@ -104,23 +104,23 @@ export default class ScanScreen extends Component {
         <StatusBar hidden />
 
         
-
         <Modal
           transparent={true}
           animationType={"slide"}
           visible={this.state.ModalVisibleStatus} 
           onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
-          <View style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
+          
+          <BlurView tint="light" intensity={70} style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
               <View style={[globalStyles.boxStyle, styles.popupbox]}>
-                <View style={{justifyContent: 'left', alignItems: 'left',height:30}}>    
+                <View style={{justifyContent: 'right', alignItems: 'flex-end',height:30}}>    
                     <Icon
                       name="highlight-off"
                       onPress={() => { 
                         this.ShowModalFunction(!this.state.ModalVisibleStatus);
                         this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
                       }}
-                      iconStyle={{marginLeft: 0, left:0}}
-                    />
+                      iconStyle={{color: '#CCCCCC'}}
+                    />    
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={styles.TextPopUp}>Thank you for making a difference through Green Mugs!</Text>
@@ -135,17 +135,17 @@ export default class ScanScreen extends Component {
                     <Text style={[{marginTop:0,color:'#FB4B4B',textDecorationLine:'underline'},styles.smallerText]}>Green Wallet.</Text>
                     </TouchableOpacity>
                     <Text style={{marginTop:20, fontFamily: 'Roboto-Bold',fontSize: 16, textAlign:'center'}}>Get $5 back when you return your Green Mug.</Text>
-                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff", width:370}}>
-                    <Icon 
-                      name="redeem"
-                      color="#5FB67D"
-                      iconStyle={{marginLeft: 0, left:0}}
-                    />
-                    <Text style={styles.verysmallText}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
-                    </View>
-                </View>
-                </View>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:40, backgroundColor:"#ffffff"}}>
+                      <Icon 
+                        name="redeem"
+                        color="#5FB67D"
+                        iconStyle={{marginLeft: 20}}
+                      />
+                      <Text style={styles.verysmallText}>Earn rewards when you return your Green Mug to any participating outlet or collect points!</Text>
+                  </View>
+              </View>
             </View>
+          </BlurView>
         </Modal>
       </View>
     );
@@ -261,6 +261,7 @@ const styles = StyleSheet.create({
   verysmallText: {
     fontFamily: 'Roboto',
     fontSize: 14,
-    textAlign:'center'
+    textAlign:'center',
+    padding: 20
   }
 });
