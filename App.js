@@ -40,6 +40,13 @@ export default class App extends React.Component {
         require('./assets/images/massage.jpg'),
         require('./assets/images/travel.jpg'),
         require('./assets/images/tree.jpg'),
+        require('./assets/images/top_up.jpg'),
+        require('./assets/images/top_down.jpg'),
+        require('./assets/images/scan-icon.png'),
+        require('./assets/images/locate-icon.png'),
+        require('./assets/images/rewards-icon.png'),
+        require('./assets/images/account-icon.png'),
+        require('./assets/images/faq-icon.png')
       ]),
       Font.loadAsync({
         'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
