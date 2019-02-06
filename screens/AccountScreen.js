@@ -203,7 +203,7 @@ export default class AccountScreen extends React.Component {
                       buttonMarginLeft={ 0 }
                       onPress={() => {
                         this.ShowModalFunction(!this.state.ModalVisibleStatus);
-                        this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'add'}});
+                        this.handleWalletAmount('add');
                       }}
                       style={styles.topup}/>
 
