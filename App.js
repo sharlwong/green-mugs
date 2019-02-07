@@ -49,7 +49,6 @@ export default class App extends React.Component {
         require('./assets/images/faq-icon.png')
       ]),
       Font.loadAsync({
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         'abeezee': require('./assets/fonts/ABeeZee-Regular.ttf'),
         'Roboto': require('./assets/fonts/Roboto-Regular.ttf'),
         'Roboto-Light': require('./assets/fonts/Roboto-Light.ttf'),

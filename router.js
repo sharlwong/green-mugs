@@ -3,7 +3,6 @@ import { createStackNavigator } from 'react-navigation';
 
 import MenuStack from './navigation/NavigationMenu';
 import Tutorial from './screens/TutorialScreen';
-import JustATributeApp from './screens/JustATributeApp';
 
 import {Icon} from 'react-native-elements';
 import { 
