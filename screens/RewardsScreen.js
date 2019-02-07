@@ -28,10 +28,10 @@ import { Alert,
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#ffffff',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
     },
     title: {
       marginTop:26,
@@ -49,10 +49,6 @@ const styles = StyleSheet.create({
       borderRadius: 9,
       borderWidth: 0.5,
       borderColor: '#000000',
-      // shadowColor: '#000',
-      // shadowOffset: { width: 0, height: 2 },
-      // shadowOpacity: 0.8,
-      // shadowRadius: 2
     },
     points: {
       position:'absolute',
@@ -81,11 +77,7 @@ const styles = StyleSheet.create({
       backgroundColor:"#F7F7F7",
       borderRadius: 9,
       borderWidth: 0.5,
-      borderColor: '#000000',
-      // shadowColor: '#000',
-      // shadowOffset: { width: 0, height: 2 },
-      // shadowOpacity: 0.8,
-      // shadowRadius: 2
+      borderColor: '#000000'
     },
     textReward: {
       fontWeight:'bold',
@@ -197,7 +189,7 @@ export default class RewardScreen extends Component {
            </View>
         </TouchableOpacity>
 
-          <Modal
+        <Modal
           transparent={true}
           animationType={"slide"}
           visible={this.state.ModalVisibleStatus} 
@@ -205,38 +197,25 @@ export default class RewardScreen extends Component {
 
             <BlurView tint="light" intensity={70} style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
               <View style={styles.modalInsideView}>
-                    <Image source={this.state.uri} style={{flex: 1, alignSelf: 'stretch', width: undefined,height: undefined}} resizeMode='contain' />
-                    <Text style={{marginBottom:20}}>Rewards to come soon!</Text>
-                    <GreenButton
-                      text="Back to Rewards Page"  
-                      onPress={() => {
-                        this.ShowModalFunction(!this.state.ModalVisibleStatus);
-                        this.props.navigation.navigate('RewardScreen');
-                      }}
-                      buttonWidth= { 200 }
-                      buttonHeight= { 40 }
-                      buttonMarginTop= { 0 }
-                      buttonMarginLeft= { 0 }
-                    />
-                    
-                </View>
-             </BlurView>
+                <Image source={this.state.uri} style={{flex: 1, alignSelf: 'stretch', width: undefined,height: undefined}} resizeMode='contain' />
+                <Text style={{marginBottom:20}}>Rewards to come soon!</Text>
+                <GreenButton
+                  text="Back to Rewards Page"  
+                  onPress={() => {
+                    this.ShowModalFunction(!this.state.ModalVisibleStatus);
+                    this.props.navigation.navigate('RewardScreen');
+                  }}
+                  buttonWidth= { 200 }
+                  buttonHeight= { 40 }
+                  buttonMarginTop= { 0 }
+                  buttonMarginLeft= { 0 }
+                />
+                
+              </View>
+           </BlurView>
         </Modal>
 
-        </View>
-        /*   
-        <Text style={[styles.box2,{top:460}]} />
-        <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-        <Text style={[styles.textReward,{top:215}]}>Food & Beverage</Text>
-        <Text style={[styles.textReward,{top:320}]}>Lifestyle</Text>
-        <Text style={[styles.textReward,{top:425}]}>Travel & Leisure</Text>
-        <Text style={[styles.textReward,{top:530}]}>Environment</Text>
-        <Image source={require('../assets/images/FandB.jpg')} style={{position:'absolute', top:150}} />
-        <Image source={require('../assets/images/Lifestyle.jpg')} style={{position:'absolute', top:265}} />
-        <Image source={require('../assets/images/travelandleisure.jpg')} style={{position:'absolute', top:370}} />
-        <Image source={require('../assets/images/environment.jpg')} style={{position:'absolute', top:465}} />
-        </View>
-        */
+      </View>
     );
 }
 }

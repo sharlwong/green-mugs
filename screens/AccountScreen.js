@@ -6,7 +6,8 @@ import {
   Image,
   Modal,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  YellowBox
 } from 'react-native';
 
 import {Icon} from 'react-native-elements';
@@ -56,6 +57,8 @@ export default class AccountScreen extends React.Component {
     const { navigation } = this.props;
     const walletAction = navigation.getParam('walletAction', 'none');
     this.handleWalletAmount(walletAction);
+
+    YellowBox.ignoreWarnings(["Unhandled promise rejection: TypeError: Network request failed"]);
   };
 
   handleWalletAmount = async (walletAction) => {

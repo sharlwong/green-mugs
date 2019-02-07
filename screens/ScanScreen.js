@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
-import { Modal,Alert, Dimensions, LayoutAnimation, Text, TextInput, Button, View, StatusBar, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Modal,
+          Alert, 
+          Dimensions, 
+          LayoutAnimation, 
+          Text, 
+          TextInput, 
+          Button, 
+          View, 
+          StatusBar, 
+          Image, 
+          StyleSheet, 
+          TouchableOpacity, 
+          YellowBox } from 'react-native';
+
 import { BarCodeScanner, Permissions, Linking, BlurView } from 'expo';
 
 import {Icon} from 'react-native-elements';
@@ -43,27 +56,16 @@ export default class ScanScreen extends Component {
 
   ShowModalFunction(visible) {
     this.setState({ModalVisibleStatus: visible});
+    YellowBox.ignoreWarnings(["Unhandled promise rejection: TypeError: Network request failed"]);
     fetch('http://192.168.1.146:3000/lock')
   }
 
   _handleBarCodeRead = () => { this.ShowModalFunction(true) }
 
-  _navigateToHome = () => {
-    console.log("BEFORE navigate")
-    this.props.navigation.navigate('Home')
-    console.log("AFTER navigate")
-  }
-
-  // _handleBarCodeRead = result => {
-  //   if (result.data !== this.state.lastScannedUrl) {
-  //     LayoutAnimation.spring();
-  //     this.setState({ lastScannedUrl: result.data });
-  //     this.props.navigation.navigate('RedeemSuccess')
-  //   }
-  // };
-
   render() {
-    const {navigate} = this.props.navigation;
+    YellowBox.ignoreWarnings(["Unhandled promise rejection: TypeError: Network request failed"]);
+
+    const {navigate} = this.props.navigation;    
     return (
       <View style={styles.container}>
 
@@ -99,7 +101,6 @@ export default class ScanScreen extends Component {
                   </View>
                 </View>
               }
-        {this._maybeRenderUrl()}
 
         <StatusBar hidden />
 
@@ -113,14 +114,14 @@ export default class ScanScreen extends Component {
           <BlurView tint="light" intensity={70} style={{flex:1,justifyContent:'center',alignItems:'center', height:400}}>
               <View style={[globalStyles.boxStyle, styles.popupbox]}>
                 <View style={{justifyContent: 'right', alignItems: 'flex-end',height:30}}>    
-                    <Icon
-                      name="highlight-off"
-                      onPress={() => { 
-                        this.ShowModalFunction(!this.state.ModalVisibleStatus);
-                        this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
-                      }}
-                      iconStyle={{color: '#CCCCCC'}}
-                    />    
+                  <Icon
+                    name="highlight-off"
+                    onPress={() => { 
+                      this.ShowModalFunction(!this.state.ModalVisibleStatus);
+                      this.props.navigation.navigate({ routeName: 'AccountScreenItself', params: {walletAction: 'deduct'}});
+                    }}
+                    iconStyle={{color: '#CCCCCC'}}
+                  />    
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={styles.TextPopUp}>Thank you for making a difference through Green Mugs!</Text>
@@ -150,48 +151,6 @@ export default class ScanScreen extends Component {
       </View>
     );
   }
-
-  _handlePressUrl = () => {
-    Alert.alert(
-      'Open this URL?',
-      this.state.lastScannedUrl,
-      [
-        {
-          text: 'Yes',
-          onPress: () => Linking.openURL(this.state.lastScannedUrl),
-        },
-        { text: 'No', onPress: () => {} },
-      ],
-      { cancellable: false }
-    );
-  };
-
-  _handlePressCancel = () => {
-    this.setState({ lastScannedUrl: null });
-  };
-
-  _maybeRenderUrl = () => {
-    if (!this.state.lastScannedUrl) {
-      return;
-    }
-
-    return (
-      <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.url} onPress={this._handlePressUrl}>
-          <Text numberOfLines={1} style={styles.urlText}>
-            {this.state.lastScannedUrl}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cancelButton}
-          onPress={this._handlePressCancel}>
-          <Text style={styles.cancelButtonText}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
 }
 
 const styles = StyleSheet.create({
