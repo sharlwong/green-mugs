@@ -181,7 +181,7 @@ const Slides = [
 
     {
         key: 'Tuto3',
-        title: 'Collect',
+        title: 'Loan Green Mug',
         subtitle: 'Scan QR code and get a Green Mug on loan for a $5 deposit',
         boxi: '',
         text: 'Description.\nSay something cool',
@@ -197,8 +197,8 @@ const Slides = [
 
     {
         key: 'Tuto4',
-        title: 'Return',
-        subtitle: 'Scan QR code to return your mug and get back your deposit',
+        title: 'Return Green Mug',
+        subtitle: 'Scan QR code to return your mug and get back your $5 deposit',
         boxi: '',
         text: 'Description.\nSay something cool',
         boxiStyle: styles.boxi,
@@ -232,13 +232,13 @@ const Slides = [
 
     {
         key: 'Tuto6',
-        title: 'Are you ready?',
+        title: 'Are You Ready?',
         subtitle: "Let's go save the Earth while enjoying our drink!",
         boxifinal: '',
         text: 'Description.\nSay something cool',
         boxifinalStyle: styles.boxifinal,
-        //image: require('../assets/images/Tuto5.jpg'),
-        //imageStyle: styles.image,
+        image: require('../assets/images/go.png'),
+        imageStyle: styles.image,
         backgroundColor: '#ffffff',
         mybutton: "hey"
     }
