@@ -1,6 +1,10 @@
 # green-mugs
 
-## How to install and set up the code
+This git repository contains code for:
+- Mobile app built in React Native and NodeJS using Expo
+- Green Mugs machine built in python and NodeJS using RaspberryPi 3 Model B+
+
+## How to install and set up the mobile app
 
 ### 1. Make sure you have the following installed on your laptop:
 - Everything inside this video tutorial for React Native/Expo: https://www.youtube.com/watch?v=RO6csdbmb4Q
@@ -92,4 +96,30 @@ https://pusher.com/tutorials/persisting-data-react-native
 We referred to this thread to figure out how to pass params into a specific screen:
 
 https://github.com/react-navigation/react-navigation/issues/3787
+
+
+## How to set up the RaspberryPi-powered 2-Way Vending Machine Prototype
+
+### What you will need
+
+- RaspberryPi 3 Model B+
+- A RC Micro Servo Motor
+- The code in `./vending-machine`
+
+### 1. Hardware set-up
+
+Plug the RC Micro Servo Motor to the RaspberryPi following this tutorial: https://www.instructables.com/id/Servo-Motor-Control-With-Raspberry-Pi/
+
+### 2. Creating a call to action
+
+- Copy and paste the vending-machine folder into your RaspberryPi
+- From the command line of your RaspberryPi, navigate to `./vending-machine/myServo` and run `node API.js`
+
+This will start a local server and allowing you to open and close the vending machine by making a web request.
+
+### 3. Using the vending machine
+
+Scanning a QR Code on the Green Mugs app will now activate the motor to open the vending machine door.
+
+
 

@@ -47,7 +47,15 @@ export default class App extends React.Component {
         require('./assets/images/locate-icon.png'),
         require('./assets/images/rewards-icon.png'),
         require('./assets/images/account-icon.png'),
-        require('./assets/images/faq-icon.png')
+        require('./assets/images/faq-icon.png'),
+        require('./assets/images/Tuto1.jpg'),
+        require('./assets/images/Tuto2.jpg'),
+        require('./assets/images/Tuto3.jpg'),
+        require('./assets/images/Tuto4.jpg'),
+        require('./assets/images/Tuto5.jpg'),
+        require('./assets/images/Bullet1.jpg'),
+        require('./assets/images/Bullet2.jpg'),
+        require('./assets/images/go.png')
       ]),
       Font.loadAsync({
         'abeezee': require('./assets/fonts/ABeeZee-Regular.ttf'),
